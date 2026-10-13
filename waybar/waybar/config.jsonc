@@ -1,0 +1,238 @@
+{
+    "layer": "top",
+    "position": "top",
+    "reload_style_on_change": true,
+    "modules-left": [
+        "custom/arch",
+        "group/system",
+        "hyprland/language",
+        "power-profiles-daemon"
+    ],
+    "modules-center": [
+        "clock#time",
+        "wlr/taskbar",
+        "clock#date"
+    ],
+    "modules-right": [
+        "idle_inhibitor",
+        "bluetooth",
+        "pulseaudio#microphone",
+        "pulseaudio",
+        "backlight",
+        "battery",
+        "network",
+        "custom/notification"
+    ],
+    // --- LEFT ---
+    "custom/arch": {
+        "format": "",
+        "tooltip-format": "Arch Linux (Hyprland)"
+    },
+    "group/system": {
+        "orientation": "horizontal",
+        "modules": [
+            "cpu",
+            "custom/dgpu",
+            "memory",
+            "temperature"
+        ]
+    },
+    "cpu": {
+        "interval": 2,
+        "format": "󰻠 {usage}%",
+        "tooltip-format": "CPU: {usage}%"
+    },
+    "custom/dgpu": {
+        "exec": "$HOME/.config/waybar/scripts/gpu.sh",
+        "return-type": "json",
+        "format": "󰢮 {}",
+        "interval": 5
+    },
+    "memory": {
+        "interval": 5,
+        "format": "󰍛 {percentage}%",
+        "tooltip-format": "RAM: {used:0.1f}GiB / {total:0.1f}GiB ({percentage}%)"
+    },
+    "temperature": {
+        "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
+        "input-filename": "temp1_input",
+        "critical-threshold": 80,
+        "interval": 3,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": [
+            "󱃃",
+            "󰔏",
+            "󱃂"
+        ],
+        "tooltip-format": "CPU Temp: {temperatureC}°C"
+    },
+    "hyprland/language": {
+        "format": "󰌌 {short}",
+        "tooltip-format": "Keyboard Layout: {long}",
+        "on-click": "hyprctl switchxkblayout all next"
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}",
+        "format-icons": {
+            "default": "󰗑",
+            "performance": "󰓅",
+            "balanced": "󰗑",
+            "power-saver": "󰌪"
+        }
+    },
+    // --- CENTER ---
+    "clock#time": {
+        "format": "{:%I:%M %p}",
+        "tooltip": false
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 18,
+        "icon-theme": "Papirus-Dark",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "app_ids-mapping": {
+            "brave-browser": "brave-browser",
+            "com.github.xournalpp.xournalpp": "xournalpp"
+        }
+    },
+    "clock#date": {
+        "format": "{:%a %d %b}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "today": "<span color='#f38ba8'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    // --- RIGHT ---
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰅶",
+            "deactivated": "󰛊"
+        },
+        "tooltip-format-activated": "Screen stays awake",
+        "tooltip-format-deactivated": "Normal sleep timer"
+    },
+    "bluetooth": {
+        "format": "󰂯",
+        "format-connected": "󰂱 {device_alias}",
+        "format-disabled": "󰂲",
+        "format-off": "󰂲",
+        "max-length": 16,
+        "tooltip-format": "Bluetooth: {status}",
+        "tooltip-format-connected": "Connected: {device_alias} ({device_address})",
+        "on-click": "sh -c 'bluetoothctl show | grep -q \"Powered: yes\" && bluetoothctl power off || bluetoothctl power on'",
+        "on-click-right": "blueman-manager"
+    },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": "󰍬",
+        "format-source-muted": "󰍭",
+        "tooltip-format": "Mic: {source_volume}%\n{source_desc}",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+        "on-click-right": "pavucontrol -t 4",
+        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SOURCE@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁",
+        "format-icons": {
+            "default": [
+                "󰕿",
+                "󰖀",
+                "󰕾"
+            ]
+        },
+        "tooltip-format": "Device: {desc}",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    },
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": [
+            "󰃟"
+        ],
+        "tooltip": false
+    },
+    "battery": {
+        "interval": 10,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-full": "󰁹 {capacity}%",
+        "format-icons": [
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ],
+        "tooltip-format": "{timeTo}\n{power} W"
+    },
+    "network": {
+        "interval": 5,
+        // no stray spaces/trailing spaces: they made this pill asymmetric
+        "format-wifi": "{icon} {essid}",
+        "format-icons": [
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰤮",
+        "max-length": 20,
+        "tooltip-format-wifi": "SSID: {essid}\nSignal: {signalStrength}%\nIP: {ipaddr}",
+        "tooltip-format-ethernet": "Interface: {ifname}\nIP: {ipaddr}",
+        "tooltip-format-disconnected": "Network Disconnected",
+        "on-click": "sh -c 'nmcli radio wifi | grep -q \"enabled\" && nmcli radio wifi off || nmcli radio wifi on'",
+        "on-click-right": "nm-connection-editor"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        // Distinct glyphs instead of <sup> markup: superscript changes the line
+        // height and made the whole pill jump when a notification arrived.
+        "format-icons": {
+            "notification": "󱅫",
+            "none": "󰂜",
+            "inhibited-notification": "󱅫",
+            "inhibited-none": "󰂜",
+            "dnd-notification": "󰂛",
+            "dnd-none": "󰪑",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰪑"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw"
+    },
+    "custom/power": {
+        "format": "󰐥",
+        "tooltip": false,
+        "on-click": "wlogout"
+    }
+}

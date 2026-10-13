@@ -1,0 +1,3 @@
+[character]
+success_symbol = "[](blue)[󰣇 ](bg:blue fg:black)[](blue)"
+error_symbol = "[](red)[󰣇 ](bg:red fg:black)[](red)"

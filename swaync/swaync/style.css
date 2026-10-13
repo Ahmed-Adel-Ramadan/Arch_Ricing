@@ -1,0 +1,184 @@
+/* --- Global Styles --- * /
+/* --- Catppuccin Mocha Palette Variables --- */
+@define-color base   #1e1e2e;
+@define-color mantle #181825;
+@define-color crust  #11111b;
+
+@define-color text   #cdd6f4;
+@define-color subtext #a6adc8;
+@define-color overlay #313244;
+@define-color surface #45475a;
+
+@define-color blue   #89b4fa;
+@define-color mauve  #cba6f7;
+@define-color red    #f38ba8;
+@define-color green  #a6e3a1;
+
+* {
+    font-family: "Symbols Nerd Font", "JetBrains Mono", sans-serif;
+    font-size: 13px;
+    color: @text;
+}
+
+/* --- Control Center Window --- */
+.control-center {
+    background-color: rgba(30, 30, 46, 0.95);
+    border: 2px solid @blue;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Widgets inside Control Center --- */
+.widget-title {
+    color: @blue;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 8px;
+}
+
+.widget-title button {
+    background: @surface;
+    color: @text;
+    border-radius: 8px;
+    padding: 4px 10px;
+    border: none;
+    box-shadow: none;
+}
+
+.widget-title button:hover {
+    background: @blue;
+    color: @base;
+}
+
+/* --- Do Not Disturb Widget --- */
+.widget-dnd {
+    background: @overlay;
+    padding: 8px;
+    border-radius: 12px;
+    margin: 8px 0px;
+}
+
+.widget-dnd switch {
+    background: @surface;
+    border-radius: 12px;
+}
+
+.widget-dnd switch:checked {
+    background: @blue;
+}
+
+/* --- Notifications Container & Cards --- */
+.notification-row {
+    outline: none;
+    margin: 6px 0px;
+}
+
+.notification {
+    background: @overlay;
+    border: 1px solid @surface;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 4px 0px;
+}
+
+.notification-default-action {
+    background: transparent;
+    color: @text;
+    border-radius: 12px;
+}
+
+.notification-default-action:hover {
+    background: @surface;
+}
+
+.summary {
+    color: @blue;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.body {
+    color: @text;
+}
+
+/* --- Clear Button --- */
+.btn-clear {
+    background: @surface;
+    color: @text;
+    border-radius: 10px;
+    padding: 6px;
+    margin-top: 8px;
+}
+
+.btn-clear:hover {
+    background: @red;
+    color: @base;
+}
+
+/* --- Media Player (MPRIS) --- */
+.widget-mpris {
+    background: @overlay;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 8px 0px;
+}
+
+.widget-mpris player {
+    padding: 8px;
+}
+
+/* --- Sliders (Volume & Backlight) --- */
+.widget-volume, .widget-backlight {
+    background: @overlay;
+    border-radius: 12px;
+    padding: 8px 12px;
+    margin: 8px 0px;
+}
+
+scale trough {
+    background: @surface;
+    border-radius: 6px;
+    min-height: 6px;
+}
+
+scale highlight {
+    background: @blue;
+    border-radius: 6px;
+}
+
+scale slider {
+    background: @text;
+    border-radius: 50%;
+    min-width: 12px;
+    min-height: 12px;
+}
+
+/* --- Quick Actions Grid --- */
+.widget-buttons-grid {
+    background: @overlay;
+    border-radius: 12px;
+    padding: 8px;
+    margin: 8px 0px;
+}
+
+.widget-buttons-grid flowboxchild button {
+    background: @surface;
+    color: @text;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 4px;
+    border: none;
+}
+
+.widget-buttons-grid flowboxchild button:hover {
+    background: @blue;
+    color: @base;
+}
+
+/* --- Popups (Notifications that slide onto the screen) --- */
+.osd-window {
+    background: rgba(30, 30, 46, 0.95);
+    border: 2px solid @blue;
+    border-radius: 16px;
+}

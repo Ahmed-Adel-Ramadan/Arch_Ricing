@@ -1,0 +1,141 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Symbols Nerd Font", "JetBrains Mono", "Font Awesome 6 Free", sans-serif;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: #cdd6f4;
+}
+
+/* 
+   All modules share the exact same background, rounding, padding, and margin 
+   Note: group/system is targeted simply as #system 
+*/
+#custom-arch, #system, #power-profiles-daemon, #workspaces, #clock, #idle_inhibitor, #pulseaudio, #battery, #bluetooth, #network, #custom-notification, #language {
+    background-color: rgba(30, 30, 46, 0.9);
+    border-radius: 12px;
+    padding: 4px 12px; /* Uniform top/bottom and left/right padding */
+    margin: 6px 4px;
+}
+
+/* --- Left: Arch & System Block --- */
+#custom-arch {
+    font-size: 18px; /* Standardized size to match the bar height */
+    color: #89b4fa;
+}
+
+/* The elements inside the system pill */
+#cpu, #custom-igpu, #custom-dgpu, #memory, #temperature {
+    padding: 0 6px; /* Spacing between the individual items inside the shared pill */
+    color: #a6e3a1; 
+}
+
+#language {
+    color: #94e2d5;
+}
+
+#power-profiles-daemon {
+    color: #f9e2af;
+}
+
+/* --- Middle: Workspaces & Clock --- */
+#clock.time {
+    color: #89b4fa;
+    font-weight: bold;
+}
+
+#workspaces {
+    padding: 2px 4px; /* Slightly reduced so the active background button fits perfectly inside the pill */
+}
+
+#workspaces button {
+    padding: 2px 8px;
+    color: #cdd6f4;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    background-color: #89b4fa;
+    color: #1e1e2e;
+}
+
+#workspaces button:hover {
+    background-color: #45475a;
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+#clock.date {
+    color: #f5c2e7;
+}
+
+/* --- Right: Controllers --- */
+#idle_inhibitor {
+    color: #6c7086;
+}
+
+#idle_inhibitor.activated {
+    color: #f9e2af;
+}
+
+#pulseaudio {
+    color: #fab387;
+}
+
+#pulseaudio.muted {
+    color: #f38ba8;
+}
+
+#pulseaudio.microphone {
+    color: #f38ba8;
+}
+
+#battery.charging {
+    color: #a6e3a1;
+}
+
+#battery.warning:not(.charging) {
+    color: #f9e2af;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f38ba8;
+    color: #1e1e2e;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network {
+    color: #cba6f7;
+}
+
+#network.disconnected {
+    color: #f38ba8;
+}
+
+#bluetooth {
+    color: #89b4fa;
+}
+
+#bluetooth.disabled, #bluetooth.off {
+    color: #6c7086;
+}
+
+#custom-notification {
+    padding-right: 16px;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #1e1e2e;
+    }
+}

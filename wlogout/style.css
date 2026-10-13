@@ -1,0 +1,65 @@
+/* Hard reset for GTK styling */
+* {
+    background-image: none;
+    box-shadow: none;
+}
+
+/* This is the background overlay. */
+window {
+    background-color: rgba(30, 30, 46, 0.6);
+}
+
+button {
+    font-family: "Symbols Nerd Font", "JetBrains Mono", sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: #cdd6f4;
+    background-color: rgba(49, 50, 68, 0.9);
+    border: 2px solid transparent;
+    border-radius: 30px;
+    
+    margin: 60px 80px; 
+    padding-top: 0px;
+    padding-bottom: 50px; 
+    
+    
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover effects */
+button:hover, button:focus {
+    background-color: #45475a;
+    border-radius: 40px;
+    /* transform: scale() removed because it crashes GTK3 */
+}
+
+/* --- Accent Colors --- */
+#lock:hover, #lock:focus {
+    border: 2px solid #a6e3a1; 
+    color: #a6e3a1;
+}
+
+#logout:hover, #logout:focus {
+    border: 2px solid #89b4fa;
+    color: #89b4fa;
+}
+
+#suspend:hover, #suspend:focus {
+    border: 2px solid #cba6f7; 
+    color: #cba6f7;
+}
+
+#hibernate:hover, #hibernate:focus {
+    border: 2px solid #fab387; 
+    color: #fab387;
+}
+
+#reboot:hover, #reboot:focus {
+    border: 2px solid #f9e2af; 
+    color: #f9e2af;
+}
+
+#shutdown:hover, #shutdown:focus {
+    border: 2px solid #f38ba8; 
+    color: #f38ba8;
+}

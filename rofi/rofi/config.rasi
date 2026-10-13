@@ -1,0 +1,122 @@
+/* --- ROFI CONFIGURATION --- */
+configuration {
+    modi: "drun,run,window";
+    font: "JetBrainsMono Nerd Font 14";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    display-drun: "  Apps";
+    display-run: "  Run";
+    display-window: "  Windows";
+    drun-display-format: "{name}";
+    window-format: "{w} · {c} · {t}";
+}
+
+/* --- THEME & COLORS --- */
+* {
+    bg-col:  #1e1e2e; 
+    bg-alt:  #313244; 
+    border-col: #89b4fa; 
+    selected-col: #89b4fa;
+    blue: #89b4fa;
+    fg-col: #cdd6f4; 
+    grey: #6c7086;
+
+    background-color: transparent;
+    text-color: @fg-col;
+    margin: 0px;
+    padding: 0px;
+    spacing: 0px;
+}
+
+/* --- WINDOW BOUNDING BOX --- */
+window {
+    background-color: @bg-col;
+    border: 2px;
+    border-color: @border-col;
+    border-radius: 16px;
+    width: 600px;
+    padding: 16px;
+}
+
+/* --- MAIN CONTAINER --- */
+mainbox {
+    background-color: transparent;
+    children: [inputbar, listview];
+}
+
+/* --- SEARCH INPUT AREA --- */
+inputbar {
+    children: [prompt, entry];
+    background-color: @bg-alt;
+    border-radius: 12px;
+    padding: 12px;
+    margin: 0px 0px 16px 0px;
+}
+
+prompt {
+    background-color: @blue;
+    padding: 6px 12px;
+    text-color: @bg-col;
+    border-radius: 8px;
+    margin: 0px 12px 0px 0px;
+    font: "JetBrainsMono Nerd Font Bold 14";
+}
+
+entry {
+    padding: 6px;
+    background-color: transparent;
+    text-color: @fg-col;
+    placeholder: "Search...";
+    placeholder-color: @grey;
+}
+
+/* --- APPLICATION LIST --- */
+listview {
+    background-color: transparent;
+    columns: 1;
+    lines: 7;
+    spacing: 8px;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+}
+
+/* --- INDIVIDUAL ITEMS --- */
+element {
+    padding: 8px 12px;
+    background-color: transparent;
+    text-color: @fg-col;
+    border-radius: 8px;
+    spacing: 12px;
+}
+
+/* 
+   THE FIX: Force Rofi to stop using its default yellow alternating row colors 
+*/
+element normal.normal,
+element alternate.normal {
+    background-color: transparent;
+    text-color: @fg-col;
+}
+
+element-icon {
+    size: 24px;
+    background-color: transparent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+/* --- HOVER / SELECTED STATE --- */
+element selected {
+    background-color: @bg-alt;
+    text-color: @blue;
+}
+
+element-text selected {
+    text-color: @blue;
+    font: "JetBrainsMono Nerd Font Bold 14";
+}
